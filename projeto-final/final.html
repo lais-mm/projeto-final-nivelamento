@@ -1,26 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prova</title>
-</head>
-<body>
-    <script> 
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
 
+        <script>
+
+            var listaNumeros = [] 
+            var numero = prompt("Informe 5 números");
+            listaNumeros.push(numero)
             
-            var n1 = parseInt(prompt("Informe o primeiro número"));
-            var n2 = parseInt(prompt("Informe o segundo número"));
-            var n3 = parseInt(prompt("Informe o terceiro número"));
-            var n4 = parseInt(prompt("Informe o quarto número"));
-            var n5 = parseInt(prompt("Informe o quinto número"));
 
-            var maior = Math.max(n1,n2,n3,n4,n5);
-            var menor = Math.min(n1,n2,n3,n4,n5);
+            while (listaNumeros.length < 5){
+                numero = prompt("Informe mais um número")
+                listaNumeros.push(numero)
+            }
 
-            document.write(`O maior número digitado foi ${maior} e o menor número digitado foi ${menor}`)
+            //maior e menor número da lista
+            Array.min = function(listaNumeros) {
+                return Math.min.apply(Math, listaNumeros);
+            };
+
+            Array.max = function(listaNumeros) {
+                return Math.max.apply(Math, listaNumeros);
+            };
+
+           document.write( `O maior número é ${Array.max(listaNumeros)} <br>`); 
+           document.write( `O menor número é ${Array.min(listaNumeros)} <br> <br>`); 
+
+            //Quais são pares e ímpares
+            function contaParImpar(listaNumeros){
+                for (var i = 0; i < listaNumeros.length; i++){
+                    numero = listaNumeros[i]
+                    if (numero % 2 == 0){
+                        document.write(`<br>O número ${numero} é par<br>`)
+                    }else{
+                        document.write(`<br>O número ${numero} é ímpar<br>`)
+                    }
+                }
+            }
+            contaParImpar(listaNumeros);
+
+            //Quais são repetidos e quantas vezes se repetem
+            function numerosRepetidos(n){
+                var repetido = 0;
+         
+                for(var a = 0; a < 5; a++)
+                {
+                    for(var b = 0; b < 5; b++)
+                    {
+                        if(n[a] == n[b])
+                        {
+                            repetido++; 
+                        }
+                    }
+                    if(!(n[a] == n[a+1]) && !(n[a] == n[a+2]) && !(n[a] == n[a+3]) && !(n[a] == n[a+4]))
+                    {
+                        document.write(`<br>O número ${n[a]} se repetiu ${repetido} veze(s)<br>`);
+                    }
+                    repetido = 0;
+                }
+            }
             
-        
-    </script>
-</body>
+            numerosRepetidos(listaNumeros);
+
+        </script>
+    </body>
+
 </html>
